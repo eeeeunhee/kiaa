@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>국제예술협회 | 공연·전시</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <a href="index.html"><img src="img/국제예술협회로고.png" alt="로고"></a>
+    </div>
+
+    <nav class="navbar" id="navbar">
+      <ul class="menu">
+        <li class="has-submenu">
+          <a href="#" class="menu-item">협회소개</a>
+          <ul class="submenu">
+            <li><a href="about.html">협회소개</a></li>
+            <li><a href="greeting.html">인사말</a></li>
+            <li><a href="vision.html">비전</a></li>
+            <li><a href="organization.html">조직도</a></li>
+          </ul>
+        </li>
+        <li> <a href="artists.html" class="menu-item">예술인·단체</a> </li>
+        <li class="menu-item-single"> <a href="events.html" class="menu-item active">공연·전시</a></li>
+        <li><a href="gallery.html">갤러리</a></li>
+        <li><a href="notice.html">공지사항</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-right">
+      <div class="header-sns">
+        <a href="https://www.instagram.com/kiaa.global" target="_blank" title="인스타그램"><img src="img/인스타.png" alt="인스타그램"></a>
+        <a href="https://m.blog.naver.com/korea_iaa" target="_blank" title="네이버 블로그"><img src="img/블로그.png" alt="블로그"></a>
+      </div>
+      <a href="apply.html" class="apply-btn">협회원 신청</a>
+      <div class="menu-toggle" id="ham-button">☰</div>
+    </div>
+  </div>
+</header>
+
+<section class="page-header">
+    <div class="container" style="text-align: center;"> <p class="hero-label" style="display: block; margin-bottom: 5px; color: #d4af37; font-weight: 600; letter-spacing: 0.1em;">
+            PERFORMANCE & EXHIBITION
+        </p>
+
+        <h2 class="section-title" style="display: inline-block;">공연/전시</h2>
+
+        <br>
+        <p class="section-subtitle" style="display: block; margin-top: 20px;">
+            국제예술협회가 주관하고 참여하는 다채로운 예술 무대를 만나보세요.
+        </p>
+        
+    </div>
+</section>
+
+<section class="events-section member-list-section"> 
+    <div class="container">
+        <div class="list-controls">
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">전체</button>
+                <button class="filter-btn" data-filter="upcoming">예정된 공연·전시</button>
+                <button class="filter-btn" data-filter="past">지난 공연·전시</button>
+            </div>
+            <div class="search-box">
+                <input type="text" id="eventSearch" placeholder="공연명 또는 주최측 검색...">
+            </div>
+        </div>
+
+        <div class="event-grid" id="eventGrid">
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="조민서"
+                 data-title="여의도 봄꽃축제"
+                 data-date="2026. 04. 05"
+                 data-time="13:00" 
+                 data-location="여의도 한강공원"
+                 data-host="영등포구, 영등포문화재단"
+                 data-manager=""
+                 data-support=""
+                 data-ticket=""
+                 data-desc="무용단 라움은 여의도 봄꽃축제에서 한국무용 작품인 '장구춤'과 '그리고, 봄을 그리며'를 선보일 예정입니다. 본 공연은 국제예술협회의 연계를 통해 진행됩니다."
+                 data-img="img/여의도봄꽃축제.jpg"
+                 data-gallery="gallery.html#20260405"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/여의도봄꽃축제.jpg');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2026. 04. 05</p>
+                    <h3 class="ev-title">여의도 봄꽃축제</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">조민서(무용단 라움)</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="국제예술협회"
+                 data-title="제 6회 코리아 국제 예술 콩쿨"
+                 data-date="2026. 03. 14"
+                 data-time="10:00" 
+                 data-location="화성아트홀"
+                 data-host="국제예술협회"
+                 data-manager="국제무용콩쿠르운영위원회, 화성시티발레단" 
+                 data-support="시티발레협동조합, 화성시학원연합회, KDI스포츠클리닉, M&S Academy, 화성미래혁신포럼"
+                 data-ticket="이상댄스 | 아티콩쿨" 
+                 data-desc="본 콩쿨은 국제예술협회가 주최한 무용 경연대회로, 발레  한국무용  현대무용 부문에서 다양한 재능을 지닌 참가자들이 한자리에 모여 기량을 펼치는 자리입니다."
+                 data-img="img/코리아국제예술콩쿨.png"
+                 data-gallery="gallery.html#20260314"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/코리아국제예술콩쿨.png');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2026. 03. 14</p>
+                    <h3 class="ev-title">제 6회 코리아 국제 예술 콩쿨</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">국제예술협회</span>
+                    </p>
+                </div>
+            </div>
+
+             <div class="event-card" 
+                 data-status="past" 
+                 data-participants="서미교(코브무용단)"
+                 data-title="외부행사 초청 한국무용 특별공연"
+                 data-date="2026. 02. 27"
+                 data-time="13:00" 
+                 data-location="수원과학대학교"
+                 data-host=""
+                 data-manager="" 
+                 data-support=""
+                 data-ticket="" 
+                 data-desc="협회원 무용수이자 안무가 서미교의 지도 아래 학생 4명이 참여한 한국무용 깜짝 공연이 외부 행사 연계를 통해 진행되었습니다."
+                 data-img="img/출판기념회.jpg"
+                 data-gallery="gallery.html#20260227"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/출판기념회.jpg');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2026. 02. 27</p>
+                    <h3 class="ev-title">외부행사 초청 한국무용 특별공연</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">서미교(코브무용단)</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="WBTA"
+                 data-title="WBTA 발레 아티스트 페스티벌"
+                 data-date="2026. 02. 11"
+                 data-time="10:00" 
+                 data-location="동탄복합문화센터 반석아트홀"
+                 data-host="WBTA"
+                 data-manager="국제예술협회" 
+                 data-support=""
+                 data-ticket="" 
+                 data-desc="협회원 무용수이자 안무가 서미교의 지도 아래 학생 4명이 참여한 한국무용 깜짝 공연이 외부 행사 연계를 통해 진행되었습니다."
+                 data-img="img/2026WBTA.jpg"
+                 data-gallery="gallery.html#20260227"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/2026WBTA.jpg');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2026. 02. 11</p>
+                    <h3 class="ev-title">WBTA 발레 아티스트 페스티벌</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">국제예술협회</span>
+                    </p>
+                </div>
+            </div>
+
+             <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="호두까기인형 갈라 2025"
+                 data-date="2025. 12. 27 ~ 28"
+                 data-time="16:00 / 19:00" 
+                 data-location="동탄복합문화센터 반석아트홀"
+                 data-host="화성시티발레단"
+                 data-manager="국제예술협회, 화성국제무용콩쿠르위원회" 
+                 data-support="KDI스포츠클리닉, 화성시학원연합회"
+                 data-ticket="인터파크" 
+                 data-desc="전문예술단체 화성시티발레단의 연말 공연인 '호두까기인형 갈라 2025'가 동탄복합문화센터 반석아트홀에서 개최되었습니다."
+                 data-img="img/2025호두.png"
+                 data-gallery="gallery.html#20251227"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/2025호두.png');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2025. 12. 24 ~ 25</p>
+                    <h3 class="ev-title">호두까기인형 갈라 2025</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="흑백 건반 위의 무"
+                 data-date="2025. 11. 11"
+                 data-time="19:30" 
+                 data-location="동탄복합문화센터 반석아트홀"
+                 data-host=""
+                 data-manager="화성피아노소사이어티" 
+                 data-support="화성특례시, 화성시문화관광재단, 안성예술지원"
+                 data-ticket="인터파크" 
+                 data-desc="화성피아노소사이어티가 주관한 눈으로 담는 기억 흑백 건반 위의 무 공연에서 전문예술단체 화성시티발레단이 협력하여 발레 공연을 선보였습니다."
+                 data-img="img/건반위의무.png"
+                 data-gallery="gallery.html#20251111"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/건반위의무.png');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2025. 11. 11</p>
+                    <h3 class="ev-title">흑백 건반 위의 무</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="The Bridge concert"
+                 data-date="2025. 09. 28"
+                 data-time="17:00" 
+                 data-location="동탄복합문화센터 반석아트홀"
+                 data-host="HBART, HBENSEMBLE, 한국장애음악인협회"
+                 data-manager="HBART, HBENSEMBLE, 한국장애음악인협회" 
+                 data-support="화성특례시, 화성시문화관광재단, 안성예술지원"
+                 data-ticket="" 
+                 data-desc="장애예술가와 함께하는 문화공연에서 전문예술단체 화성시티발레단이 협력하여 발레 공연을 선보였습니다."
+                 data-img="img/thebridge.jpg"
+                 data-gallery="gallery.html#20250928"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/thebridge.jpg');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2025. 09. 28</p>
+                    <h3 class="ev-title">The Bridge concert</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="제 5회 화성국제무용페스티벌 with 화성국제무용콩쿨"
+                 data-date="2025. 03. 01"
+                 data-time="09:30" 
+                 data-location="동탄복합문화센터 반석아트홀"
+                 data-host="화성시티발레단"
+                 data-manager="국제예술협회, 화성국제무용콩쿠르 운영위원회" 
+                 data-support="시티발레협동조합, 화성시학원연합회, HS솔루션, KDI스포츠클리닉, 바이올로지필라테스&자이로토닉서울필라테스, M&S Academy, 화성미래혁신포럼"
+                 data-ticket="" 
+                 data-desc="한국무용 현대무용 발레 콩쿨"
+                 data-img="img/5회콩쿨.jpg"
+                 data-gallery="gallery.html#20250301"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/5회콩쿨.jpg');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2025. 03. 01</p>
+                    <h3 class="ev-title">제 5회 화성국제무용페스티벌 with 화성국제무용콩쿨</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="국제예술협회"
+                 data-title="제 7회 화성국제무용페스티벌 with 화성국제갈라공연"
+                 data-date="2025. 02.25"
+                 data-time="17:00" 
+                 data-location="화성아트홀"
+                 data-host="WBTA"
+                 data-manager="국제예술협회, 화성시티발레단" 
+                 data-support=""
+                 data-ticket="" 
+                 data-desc="역량강화"
+                 data-img="img/2025WBTA.jpg"
+                 data-gallery="gallery.html#20250225"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/2025WBTA.jpg');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2025. 02.25</p>
+                    <h3 class="ev-title">제 7회 화성국제무용페스티벌 with 화성국제갈라공연</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="비상콘서트"
+                 data-date="2024. 10.04"
+                 data-time="19:30" 
+                 data-location="화성아트홀"
+                 data-host="HBART, HBENSEMBLE, 한국장애음악인협회"
+                 data-manager="화성특례시, 화성시문화관광재단, 안성예술지원" 
+                 data-support=""
+                 data-ticket="" 
+                 data-desc="장애예술가들이 펼치는 음악 페스티벌 비상 콘서트에서 전문예술단체 화성시티발레단이 협력하여 발레 공연을 선보였습니다."
+                 data-img="img/비상콘서트.jpg"
+                 data-gallery="gallery.html#20241004"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/비상콘서트.jpg');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2024. 10.04</p>
+                    <h3 class="ev-title">비상콘서트</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="제 4회 화성국제무용페스티벌 with 화성국제무용콩쿨"
+                 data-date="2024. 03.30"
+                 data-time="09:30" 
+                 data-location="동탄복합문화센터 반석아트홀"
+                 data-host="화성시티발레단"
+                 data-manager="국제예술협회, 화성국제무용콩쿠르 운영위원회" 
+                 data-support="시티발레협동조합, 화성시학원연합회, HS솔루션, KDI스포츠클리닉, 바이올로지필라테스&자이로토닉서울필라테스, M&S Academy, 화성미래혁신포럼"
+                 data-ticket="" 
+                 data-desc="한국무용 현대무용 발레 콩쿨"
+                 data-img="img/4회콩쿨.jpg"
+                 data-gallery="gallery.html#20240330"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/4회콩쿨.jpg');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2024. 03.30</p>
+                    <h3 class="ev-title">제 4회 화성국제무용페스티벌 with 화성국제무용콩쿨</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="국제예술협회"
+                 data-title="제 6회 화성국제무용페스티벌 with 화성국제갈라공연"
+                 data-date="2024. 02.20"
+                 data-time="" 
+                 data-location="화성아트홀"
+                 data-host="WBTA"
+                 data-manager="국제예술협회" 
+                 data-support=""
+                 data-ticket="" 
+                 data-desc="발레 아티스트 페스티벌 워크샵"
+                 data-img="img/2024WBTA.jpg"
+                 data-gallery="gallery.html#20240220"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/2024WBTA.jpg');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2024. 02.20</p>
+                    <h3 class="ev-title">제 6회 화성국제무용페스티벌 with 화성국제갈라공연</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">국제예술협회</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="국제예술협회"
+                 data-title="제 3회 화성국제무용페스티벌 with 화성국제무용콩쿠르"
+                 data-date="2023. 02.25"
+                 data-time="09:00" 
+                 data-location="동탄복합문화센터 반석아트홀"
+                 data-host="국제예술협회"
+                 data-manager="화성시티발레단, 화성국제무용콩쿠르 운영위원회" 
+                 data-support=""
+                 data-ticket="" 
+                 data-desc="한국무용 현대무용 발레 콩쿠르"
+                 data-img="img/2023콩쿨.jpg"
+                 data-gallery="gallery.html#20230225"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/2023콩쿨.jpg');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2023. 02.25</p>
+                    <h3 class="ev-title">제 3회 화성국제무용페스티벌 with 화성국제무용콩쿠르</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">국제예술협회</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="제 5회 하늘바람꽃 무용축제"
+                 data-date="2022. 12.17"
+                 data-time="19:00" 
+                 data-location="동탄복합문화센터 반석아트홀"
+                 data-host="화성시티발레단"
+                 data-manager="국제예술협회" 
+                 data-support="화성시학원연합회"
+                 data-ticket="인터파크" 
+                 data-desc="무용축제"
+                 data-img="img/2022하늘바람꽃.png"
+                 data-gallery="gallery.html#20221217"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/2022하늘바람꽃.png');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2022. 12.17</p>
+                    <h3 class="ev-title">제 5회 하늘바람꽃 무용축제</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">국제예술협회</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="레인보우 코다"
+                 data-date="2022. 10.22"
+                 data-time="10:00" 
+                 data-location="동탄 노작호수공원"
+                 data-host="화성시티발레단"
+                 data-manager="화성시티발레단" 
+                 data-support="화성시"
+                 data-ticket="" 
+                 data-desc="키즈캐릭터 발레 페스티벌"
+                 data-img="img/레인보우코다.png"
+                 data-gallery="gallery.html#20221022"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/레인보우코다.png');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2022. 10.22</p>
+                    <h3 class="ev-title">레인보우 코다</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+             <div class="event-card" 
+                 data-status="past" 
+                 data-participants="국제예술협회"
+                 data-title="제 2회 화성국제무용페스티벌 with 화성국제무용콩쿨"
+                 data-date="2022. 04.23"
+                 data-time="10:00" 
+                 data-location="동탄복합문화센터 반석아트홀"
+                 data-host="국제예술협회"
+                 data-manager="화성시티발레단, 화성국제무용콩쿠르 운영위원회" 
+                 data-support=""
+                 data-ticket="" 
+                 data-desc="한국무용 현대무용 발레 콩쿨"
+                 data-img="img/2022콩쿨.png"
+                 data-gallery="gallery.html#20220423"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/2022콩쿨.png');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2022. 04.23</p>
+                    <h3 class="ev-title">제 2회 화성국제무용페스티벌 with 화성국제무용콩쿨</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">국제예술협회</span>
+                    </p>
+                </div>
+            </div>
+
+             <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="해설있는 발레 호두까기 인형"
+                 data-date="2021. 12.04"
+                 data-time="18:00" 
+                 data-location="동탄복합문화센터 반석아트홀"
+                 data-host="한국무용협회 화성시지부"
+                 data-manager="화성시티발레단" 
+                 data-support="화성시, 화성시의회, 화성예총"
+                 data-ticket="" 
+                 data-desc="해설있는 발레 호두까기 인형"
+                 data-img="img/2021호두.png"
+                 data-gallery="gallery.html#20211204"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/2021호두.png');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2021. 12.04</p>
+                    <h3 class="ev-title">해설있는 발레 호두까기 인형</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="제 4회 하늘바람꽃 발레 페스티벌"
+                 data-date="2021. 10.31"
+                 data-time="15:00 | 19:00" 
+                 data-location="동탄복합문화센터 반석아트홀"
+                 data-host="화성시티발레단"
+                 data-manager="국제예술협회, 화성국제무용콩쿠르 운영위원회" 
+                 data-support="블루엣, 동탄영발레단, 수원시티바레단, 코리아시티발레협동조합"
+                 data-ticket="" 
+                 data-desc="제 4회 하늘바람꽃 발레 페스티벌"
+                 data-img="img/2021하늘바람꽃.png"
+                 data-gallery="gallery.html#20211031"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/2021하늘바람꽃.png');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2021. 10.31</p>
+                    <h3 class="ev-title">제 4회 하늘바람꽃 발레 페스티벌</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="춤으로 만나는 2판!4판!"
+                 data-date="2021. 09.04"
+                 data-time="17:00" 
+                 data-location="모두누림센터 누림아트홀"
+                 data-host="화성시문화재단"
+                 data-manager="화성시문화재단" 
+                 data-support=""
+                 data-ticket="" 
+                 data-desc="화성예술인시리즈 1 화통 희망을 주는 춤판 2판!4판!에서 전문예술단체 화성시티발레단이 출연하여 발레 공연을 선보였습니다."
+                 data-img="img/2판4판.png"
+                 data-gallery="gallery.html#20210904"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/2판4판.png');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2021. 09.04</p>
+                    <h3 class="ev-title">춤으로 만나는 2판!4판!</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="제 1회 화성국제무용페스티벌 with 화성국제무용콩쿨"
+                 data-date="2021. 04.11"
+                 data-time="10:00" 
+                 data-location="동탄복합문화센터 반석아트홀"
+                 data-host="화성시티발레단"
+                 data-manager="화성국제무용콩쿠르 운영위원회" 
+                 data-support="화성시학원연합회"
+                 data-ticket="" 
+                 data-desc="한국무용 현대무용 발레 콩쿨"
+                 data-img="img/2021콩쿨.png"
+                 data-gallery="gallery.html#20210411"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/2021콩쿨.png');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2021. 04.11</p>
+                    <h3 class="ev-title">제 1회 화성국제무용페스티벌 with 화성국제무용콩쿨</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="Ballet Love Story"
+                 data-date="2020. 10.17"
+                 data-time="18:00" 
+                 data-location="성암아트홀"
+                 data-host="화성시티발레단"
+                 data-manager="" 
+                 data-support="블루엣발레아카데미"
+                 data-ticket="" 
+                 data-desc="화성시민과 함께하는 발레 러브 스토리"
+                 data-img="img/발레러브스토리.jpg"
+                 data-gallery="gallery.html#20201017"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/발레러브스토리.jpg');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2020. 10.17</p>
+                    <h3 class="ev-title">Ballet Love Story</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="제 2회 화성시티발레단 정기공연"
+                 data-date="2018. 01.27"
+                 data-time="18:00" 
+                 data-location="오산문화예술회관 대공연장"
+                 data-host="화성시티발레단"
+                 data-manager="" 
+                 data-support=""
+                 data-ticket="" 
+                 data-desc="봄을 여는 발레축제"
+                 data-img="img/2회정기공연.png"
+                 data-gallery="gallery.html#20180127"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/2회정기공연.png');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2018. 01.27</p>
+                    <h3 class="ev-title">제 2회 화성시티발레단 정기공연</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-card" 
+                 data-status="past" 
+                 data-participants="화성시티발레단"
+                 data-title="제 1회 화성시티발레단 창단공연"
+                 data-date="2016. 04.09"
+                 data-time="" 
+                 data-location="오산문화예술회관 대공연장"
+                 data-host="화성시티발레단"
+                 data-manager="" 
+                 data-support=""
+                 data-ticket="" 
+                 data-desc="화성시티발레단 창단공연"
+                 data-img="img/창단공연.png"
+                 data-gallery="gallery.html#20160409"> <div class="poster-wrapper">
+                    <div class="poster-img" style="background-image: url('img/창단공연.png');">
+                        <span class="badge b-past">종료</span>
+                    </div>
+                </div>
+                <div class="event-info">
+                    <p class="ev-date">2016. 04.09</p>
+                    <h3 class="ev-title">제 1회 화성시티발레단 창단공연</h3>
+                    <p class="ev-participants" style="color: #222; font-weight: 600; margin-top: 4px;">
+                      참여예술인 | <span style="font-weight: 400; color: #666;">화성시티발레단</span>
+                    </p>
+                </div>
+            </div>      
+        </div>
+    </div>
+</section>
+
+<div id="eventModal" class="modal">
+    <div class="modal-content ev-layout">
+        <span class="close-modal">&times;</span>
+        
+        <div class="ev-modal-body">
+            
+            <div class="ev-modal-visual">
+                <div id="modalMainImg" class="main-img"></div>
+            </div>
+
+            <div class="ev-modal-info">
+                <div class="info-header">
+                    <span id="modalBadge" class="badge"></span>
+                    <h2 id="modalTitle">제목</h2>
+                    <p id="modalDate" class="ev-date"></p>
+                </div>
+
+                <div class="info-section" id="sec-desc" style="margin-bottom: 25px;">
+                    <h4 style="color: #f39c12; border: none; padding: 0;">공연/전시 소개</h4>
+                    <div class="history-text" id="modalDesc" style="background: #f9f9f9; padding: 15px; border-radius: 8px;"></div>
+                </div>
+
+                <div class="info-section">
+                    <h4>기본 정보</h4>
+                    <ul class="basic-info-list">
+                        <li id="li-participants"><strong>참여 예술인</strong> <span class="value"></span></li>
+                        <li id="li-location"><strong>장소</strong> <span class="value"></span></li>
+                        <li id="li-time"><strong>시간</strong> <span class="value"></span></li>
+                        <li id="li-host"><strong>주최</strong> <span class="value"></span></li>
+                        <li id="li-manager"><strong>주관</strong> <span class="value"></span></li>
+                        <li id="li-support"><strong>후원</strong> <span class="value"></span></li>
+                        <li id="li-ticket"><strong>예매처</strong> <span class="value"></span></li>
+                    </ul>
+                </div>
+
+                <div class="info-section" id="sec-gallery-link">
+                    <a id="modalGalleryBtn" href="#" class="apply-btn" style="display: block; text-align: center; width: 100%; text-decoration: none;">
+                        <i class="fa-solid fa-images"></i> 현장 사진 보러가기
+                    </a>
+                </div>
+            </div> 
+        </div> 
+    </div> 
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>국제예술협회 | KIAA</h3>
+      <p>모든 장르를 하나로, 예술을 잇다</p>
+      <p>All Genres, One Art</p>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p>협회장: 강인숙</p>
+      <p>이메일: korea_iaa@naver.com</p>
+      <p>전화번호: 010-9092-9705</p>
+    </div>
+    <div class="footer-section">
+      <h4>Address</h4>
+      <p>경기도 화성시 동탄공원로 1길 27. 2층</p>
+    </div>
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="sns">
+        <a href="https://www.instagram.com/kiaa.global" target="_blank"><img src="img/인스타.png" alt="인스타그램"></a>
+        <a href="https://m.blog.naver.com/korea_iaa" target="_blank"><img src="img/블로그.png" alt="블로그"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 국제예술협회 | KIAA. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
