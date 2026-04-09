@@ -33,22 +33,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- [기존 코드를 아래 내용으로 대체] ---
     if (heroBg) {
         window.addEventListener('scroll', () => {
             const scrollY = window.scrollY;
-            const vh = window.innerHeight;
-            const rawRatio = scrollY / vh;
-            const scrollRatio = Math.min(rawRatio, 1.5);
-            heroBg.style.filter = `blur(${scrollRatio * 15}px)`;
+            
+            // 효과가 완료되는 지점 (300px만 내려도 블러/스케일 효과가 끝남)
+            const scrollThreshold = 500; 
+            const scrollRatio = Math.min(scrollY / scrollThreshold, 1);
+
+            // 시각 효과: 수치를 조절해 더 부드럽고 빠르게 반응하게 함
+            heroBg.style.filter = `blur(${scrollRatio * 10}px)`; 
             heroBg.style.transform = `scale(${1.1 + scrollRatio * 0.05})`;
+
             if (heroContent) {
-                if (rawRatio > 0.3) heroContent.classList.add('visible');
-                else heroContent.classList.remove('visible');
+                // 스크롤을 아주 살짝(50px)만 내려도 메인 글자가 바로 나타남
+                if (scrollY > 50) {
+                    heroContent.classList.add('visible');
+                } else {
+                    heroContent.classList.remove('visible');
+                }
             }
         });
     } else if (heroContent) {
+        // 메인 페이지가 아닌 다른 페이지(heroBg가 없는 경우)는 글자가 바로 보이게 설정
         heroContent.classList.add('visible');
     }
+
+
 
     // --- [2. 예술인·단체 로직 (artists.html) - 정렬 및 간격 최종 수정본] ---
 const memberGrid = document.querySelector('.member-grid');
