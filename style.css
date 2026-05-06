@@ -1662,66 +1662,350 @@ footer {
 }
 .sns-btn:hover { background: #111; color: #ffcc00; }
 
-@media (max-width: 992px) {
-    .modal-body { 
-        /* 1. 세로로 쌓되, 간격을 최소화 */
-        flex-direction: column !important; 
-        gap: 15px;
-    }
-    
-    .modal-img-wrapper { 
-        flex: none !important; 
-        width: 100% !important; 
-        height: auto !important; 
-        padding: 10px !important; /* 여백을 줄여서 사진이 더 잘 보이게 */
+@media screen and (max-width: 992px) {
+    /* 1. 모달 컨테이너: 예술인 레이아웃 전용 */
+    .modal-content.profile-layout {
+        display: block !important;
+        width: 94% !important;
+        margin: 10px auto !important;
+        height: auto !important;
+        max-height: 92vh !important; 
+        overflow-y: auto !important; 
+        padding: 0 !important;
     }
 
-    .modal-img { 
-        /* 2. 고정 높이(450px) 대신 화면 비율 사용 */
-        width: 100%;
-        height: auto !important; 
-        max-height: 40vh; /* 화면 높이의 40%를 넘지 않게 제한 (길어짐 방지) */
-        object-fit: contain; /* 사진이 잘리지 않고 전체가 다 보이게 */
-        border-radius: 10px;
+    /* 2. 바디 영역: 위아래 배치 강제 */
+    .modal-body {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
     }
 
-    /* ⭐ 하단 작은 사진들 (Thumbnail) */
-    .sub-images {
-        /* 3. 높이를 고정하지 않고 화면 비율로 조절 */
-        height: 18vw !important; /* 화면 폭에 맞춰 썸네일 크기 자동 조절 */
-        min-height: 80px;
-        max-height: 120px;
-        margin-top: 10px !important;
-        gap: 8px !important;
-        justify-content: center; /* 작은 사진들도 가운데 정렬 */
+    /* 3. 이미지 영역 (예술인 사진) */
+    .modal-img-wrapper {
+        display: block !important;
+        width: 100% !important;
+        padding: 15px !important;
+        box-sizing: border-box !important;
     }
-    
-    .sub-images img {
-        width: auto;
-        height: 100%;
-        aspect-ratio: 1 / 1; /* 썸네일은 정사각형 유지 */
-        object-fit: cover;
+
+    .modal-img {
+        width: 100% !important;
+        height: 300px !important; 
+        background-size: contain !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+
+    /* 4. 글자 영역: 위치 정상화 및 가독성 확보 */
+    .modal-info-details {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 100px !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+        background: #ffffff !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        clear: both !important;
+    }
+
+    /* 5. 예술인 성함 및 소개글 */
+    #modalName {
+        font-size: 1.5rem !important;
+        margin: 10px 0 !important;
+        color: #000 !important;
+        text-align: left !important;
+    }
+
+    .intro-text, .history-text {
+        display: block !important;
+        background: #f9f9f9 !important;
+        padding: 15px !important;
+        word-break: keep-all !important; /* 한글 가독성 향상 */
+        line-height: 1.6;
+        text-align: left !important;
+    }
+
+    /* 6. 상세 정보 리스트: 요청하신 왼쪽 정렬 및 가로 배치 반영 */
+    .basic-info-list {
+        padding: 0 !important;
+        margin: 20px 0 !important;
+    }
+
+    .basic-info-list li {
+        display: flex !important;
+        flex-direction: row !important;      /* 가로 배치 (항목명 | 내용) */
+        justify-content: flex-start !important; /* 왼쪽 정렬 */
+        align-items: center !important;
+        border-bottom: 1px solid #eee;
+        padding: 12px 0 !important;
+        text-align: left !important;
+    }
+
+    .basic-info-list li strong {
+        min-width: 80px !important; /* 항목명(활동분야 등) 너비 고정 */
+        color: #f39c12;
+        font-size: 0.95rem;
+        flex-shrink: 0; /* 글자 밀림 방지 */
+    }
+
+    .basic-info-list li span {
+        font-size: 0.95rem;
+        color: #333;
+        word-break: break-all;
     }
 }
 
-@media (max-width: 768px) {
-    .title-wrap {
-        gap: 8px;
-        margin-bottom: 18px !important;
-    }
-    
-    .intro-text {
-        /* 모바일에서는 상단 마진을 조금 더 주어 노란선/제목과 확실히 분리 */
-        margin-top: 20px !important; 
-        font-size: 0.95rem;
-        line-height: 1.6;
+
+
+/* 이벤트 전용 */
+#eventModalNew {
+    display: none;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* 수평 중앙 정렬 */
+}
+
+.ev-new-layout {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 900px; 
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    /* 화면 높이를 넘지 않도록 제한 */
+    max-height: 90vh; 
+    box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+}
+.ev-new-body {
+    display: flex;
+    width: 100%;
+    /* 바디 영역에도 높이 제한을 두어 내부 스크롤 유도 */
+    height: 100%; 
+    overflow: hidden;
+}
+
+.ev-new-visual {
+    /* 기존 45%에서 비율을 조금 줄임 */
+    flex: 0 0 40%; 
+    /* [핵심] 포스터 너비가 일정 크기 이상 커지지 않도록 제한 */
+    max-width: 350px; 
+    /* 포스터 영역 자체의 배경색 (부담스러움 완화) */
+    background: #fcfcfc; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #f1f1f1;
+    /* 포스터 영역 padding 추가로 여백 확보 */
+    padding: 30px; 
+    box-sizing: border-box;
+}
+
+.ev-new-img {
+    width: 100%;
+    /* 데스크톱 적정 높이 고정 */
+    height: 450px; 
+    min-height: auto !important;
+    /* [핵심] 이미지를 자르지 않고 규격 안에 맞춤 */
+    background-size: contain !important; 
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    /* 이미지 자체에 은은한 그림자 효과 (규격 느낌 강조) */
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1)); 
+}
+.ev-new-info {
+    flex: 1;
+    /* 패딩을 조절하여 여백 미 확보 */
+    padding: 40px 50px; 
+    /* 내용이 많으면 이 영역만 스크롤됨 */
+    overflow-y: auto; 
+    background: #fff;
+}
+
+/* 1. 모달 전체 배경 및 테두리 정돈 */
+.ev-new-layout {
+    border: none !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+    background: #fff !important;
+}
+
+/* 2. 헤더 영역 (제목 & 배지) */
+.ev-new-header {
+    margin-bottom: 25px;
+    border-bottom: 2px solid #f8f8f8;
+    padding-bottom: 15px;
+}
+
+#evNewBadge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 상태별 배지 색상 (선택사항) */
+.badge.b-past { background: #bbb; color: #fff; } /* 종료 */
+.badge.b-upcoming { background: #f39c12; color: #fff; } /* 예정 */
+
+#evNewTitle {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #222;
+    margin: 5px 0;
+}
+
+.ev-date-text {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* 3. 섹션 제목 (공연 소개, 기본 정보 등) */
+.ev-new-section h4 {
+    font-size: 1.1rem;
+    color: #f39c12; /* 오렌지 포인트 컬러 */
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.ev-new-section h4::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background: #f39c12;
+    margin-right: 8px;
+    border-radius: 2px;
+}
+
+/* 4. 소개글 박스 스타일 */
+.ev-intro-box {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 1.7;
+    color: #444;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+/* 5. 기본 정보 리스트 (가장 중요한 부분) */
+.ev-new-list {
+    list-style: none;
+    padding: 0;
+}
+
+.ev-new-list li {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f1f1;
+    align-items: flex-start;
+}
+
+.ev-new-list li strong {
+    width: 100px; /* 항목 이름 너비 고정 */
+    color: #f39c12;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.ev-new-list li span {
+    color: #333;
+    font-size: 0.95rem;
+    word-break: keep-all;
+}
+
+/* 6. 현장 사진 버튼 스타일 */
+.ev-apply-btn {
+    display: block;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #333;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.ev-apply-btn:hover {
+    background: #f39c12;
+    color: #fff;
+    border-color: #f39c12;
+}
+
+/* 7. 모바일 닫기 버튼 위치 보정 */
+.close-ev-modal {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    color: #333;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* --- [Event Modal New - Mobile] --- */
+@media screen and (max-width: 992px) {
+    .ev-new-layout {
+        display: block !important;
+        width: 94% !important;
+        margin: 15px auto !important;
+        height: auto !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
     }
 
-    /* 노란선(::after)이 있다면 위치 강제 조정 */
-    .title-wrap h2::after {
-        content: ""; /* 만약 가상요소라면 */
-        display: block;
-        margin-top: 12px !important;
+    .ev-new-body { display: block !important; }
+
+    .ev-new-visual {
+        display: flex !important;
+        justify-content: center !important; /* 가로 가운데 */
+        align-items: center !important;     /* 세로 가운데 */
+        width: 100% !important;           /* 너비 꽉 차게 */
+        padding: 20px !important;         /* 여백 */
+        box-sizing: border-box !important;
+        background: #fff !important;      /* 배경색 */
+        margin: 0 auto !important;
+    }
+
+    .ev-new-img {
+        width: 100% !important;
+        max-width: 400px !important;     /* 적정 크기 제한 */
+        height: 450px !important;        /* 높이 고정 */
+        margin: 0 auto !important;       /* 자체 중앙 정렬 보조 */
+        background-size: contain !important;
+        background-position: center center !important; /* 배경 이미지 중앙 */
+        background-repeat: no-repeat !important;
+        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+    }
+    .ev-new-info { 
+        width: 100% !important; 
+        padding: 20px !important; 
+        display: block !important;
+        background: #fff !important;
+    }
+
+    .ev-new-list li {
+        display: flex !important;
+        flex-direction: row !important; /* 왼쪽 정렬 가로 배치 */
+        justify-content: flex-start !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #eee;
+    }
+
+    .ev-new-list li strong {
+        min-width: 90px !important;
+        color: #f39c12;
+        flex-shrink: 0;
     }
 }
 
@@ -2582,9 +2866,30 @@ footer {
 .event-card .poster-wrapper .badge.b-upcoming { background-color: #f39c12 !important; }
 .event-card .poster-wrapper .badge.b-past { background-color: rgba(34, 34, 34, 0.9) !important; }
 
-/* 카드 텍스트 스타일 (날짜 포함) */
-.event-card .event-info {
-    padding: 20px !important;
+.event-card .event-img {
+    width: 100%;
+    height: 380px; /* 모든 카드의 이미지 높이를 동일하게 고정 */
+    overflow: hidden;
+    background-size: cover; /* 이미지가 영역에 꽉 차도록 비율 조정 */
+    background-position: center; /* 이미지의 중앙이 보이도록 */
+    background-repeat: no-repeat;
+    border-radius: 12px; /* 카드 상단 둥글게 */
+    background-color: #f0f0f0; /* 이미지 로딩 전 배경색 */
+}
+
+.event-info {
+    padding: 15px 5px;
+    text-align: left;
+}
+
+.event-info h3 {
+    font-size: 1.1rem;
+    margin: 8px 0;
+    /* 제목이 길어질 경우 두 줄까지만 보여주고 줄임표(...) 처리 */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .event-card .event-title {

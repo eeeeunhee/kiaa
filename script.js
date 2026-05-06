@@ -180,11 +180,10 @@ if (eventGrid) {
     const eventCards = document.querySelectorAll('.event-card');
     const eFilterBtns = document.querySelectorAll('.filter-btn');
     const eSearchInput = document.getElementById('eventSearch');
-    const eventModal = document.getElementById('eventModal');
-    // 클래스명이 변경되었을 수 있으므로 공통 close-modal 사용
-    const eCloseBtn = eventModal ? eventModal.querySelector('.close-modal') : null;
+    const evModal = document.getElementById('eventModalNew'); // 새로 만든 전용 모달 ID
+    const eCloseBtn = evModal ? evModal.querySelector('.close-ev-modal') : null;
 
-    // [1] 검색 및 필터 통합 로직
+    // 리스트 필터링 및 검색 함수
     function updateEventList() {
         const activeBtn = document.querySelector('.filter-btn.active');
         const activeFilter = activeBtn ? activeBtn.dataset.filter : 'all';
@@ -204,7 +203,24 @@ if (eventGrid) {
         });
     }
 
-    // 필터 버튼 클릭 이벤트
+    // 데이터 유무에 따른 리스트 항목 표시 함수 (CSS 간섭 방지형)
+    const checkAndSet = (id, value) => {
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        // span.value가 있으면 그 안에 텍스트를 넣고, 없으면 target 자체에 넣음
+        const valSpan = target.querySelector('.value') || target;
+        
+        if (!value || value.trim() === "" || value === "undefined" || value === "null") {
+            target.style.display = 'none'; 
+        } else {
+            // 인라인 display를 지워서 CSS 미디어쿼리(flex/block)가 작동하게 함
+            target.style.display = ""; 
+            valSpan.innerText = value;
+        }
+    };
+
+    // 필터 버튼 이벤트
     eFilterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             eFilterBtns.forEach(b => b.classList.remove('active'));
@@ -213,120 +229,93 @@ if (eventGrid) {
         });
     });
 
-    // 검색 입력 이벤트
+    // 검색창 입력 이벤트
     if (eSearchInput) {
         eSearchInput.addEventListener('keyup', updateEventList);
     }
 
-    // [2] 카드 클릭 시 모달 데이터 매핑 (ev- 클래스 반영 버전)
+    // 카드 클릭 시 모달 열기
     eventCards.forEach(card => {
         card.addEventListener('click', () => {
             const d = card.dataset;
 
-            // 1. 모달 왼쪽 포스터 설정
-            const modalMainImg = document.getElementById('modalMainImg');
-            if (modalMainImg) {
+            // 1. 이미지 설정
+            const evNewImg = document.getElementById('evNewImg');
+            if (evNewImg) {
                 if (d.img && d.img !== "undefined") {
-                    modalMainImg.style.backgroundImage = `url('${d.img}')`;
+                    evNewImg.style.backgroundImage = `url('${d.img}')`;
                 } else {
-                    modalMainImg.style.backgroundImage = "none";
+                    evNewImg.style.backgroundImage = "none";
                 }
             }
 
-            // 2. 제목, 날짜, 뱃지 설정
-            const modalTitle = document.getElementById('modalTitle');
-            const modalDate = document.getElementById('modalDate');
-            const modalBadge = document.getElementById('modalBadge');
+            // 2. 기본 텍스트 정보 설정
+            const evNewTitle = document.getElementById('evNewTitle');
+            const evNewDate = document.getElementById('evNewDate');
+            const evNewBadge = document.getElementById('evNewBadge');
 
-            if (modalTitle) modalTitle.innerText = d.title || "";
-            if (modalDate) modalDate.innerText = d.date || "";
-            
-            if (modalBadge) {
-                modalBadge.innerText = (d.status === 'past') ? '종료' : '예정';
-                // 상태에 따라 색상을 바꾸고 싶다면 아래 주석 해제
-                // modalBadge.style.backgroundColor = (d.status === 'past') ? '#666' : '#f39c12';
+            if (evNewTitle) evNewTitle.innerText = d.title || "";
+            if (evNewDate) evNewDate.innerText = d.date || "";
+            if (evNewBadge) {
+                evNewBadge.innerText = (d.status === 'past') ? '종료' : '예정';
+                evNewBadge.className = `badge b-${d.status}`; // 상태별 색상 적용을 위해 클래스 추가
             }
 
-            // 3. 빈 항목 숨기기 함수 (강제 초기화 로직 추가)
-            const checkAndSet = (id, value) => {
-                const target = document.getElementById(id);
-                if (!target) return;
-    
-                const valSpan = target.querySelector('.value');
+            // 3. 상세 정보 리스트 설정 (ID는 새로 짠 구조에 맞게 매핑)
+            checkAndSet('evNewParticipants', d.participants);
+            checkAndSet('evNewLocation', d.location);
+            checkAndSet('evNewTime', d.time);
+            checkAndSet('evNewHost', d.host);
+            checkAndSet('evNewManager', d.manager);
+            checkAndSet('evNewSupport', d.support);
+            checkAndSet('evNewTicket', d.ticket);
 
-                // 1단계: 일단 이전 데이터를 깨끗하게 지웁니다 (핵심!)
-                if (valSpan) valSpan.innerText = ""; 
-
-                // 2단계: 값이 진짜 있을 때만 보여주고 텍스트 넣기
-                if (!value || value.trim() === "" || value === "undefined" || value === "null") {
-                    target.style.display = 'none'; 
-                } else {
-                    target.style.display = 'flex'; 
-                    if (valSpan) valSpan.innerText = value;
-                }
-            };
-
-            // 기본 정보 상세 항목 체크
-            checkAndSet('li-participants', d.participants);
-            checkAndSet('li-location', d.location);
-            checkAndSet('li-time', d.time);
-            checkAndSet('li-host', d.host);
-            checkAndSet('li-manager', d.manager);
-            checkAndSet('li-support', d.support);
-            checkAndSet('li-ticket', d.ticket);
-
-            // 4. 소개글 처리 (위치 이동 반영)
-            const descSec = document.getElementById('sec-desc');
-            const modalDesc = document.getElementById('modalDesc');
-            if (modalDesc) {
+            // 4. 소개글 설정
+            const evNewDesc = document.getElementById('evNewDesc');
+            const descSec = evNewDesc ? evNewDesc.closest('.ev-new-section') : null;
+            if (evNewDesc) {
                 if (!d.desc || d.desc.trim() === "" || d.desc === "undefined") {
                     if (descSec) descSec.style.display = 'none';
                 } else {
-                    if (descSec) descSec.style.display = 'block';
-                    modalDesc.innerText = d.desc;
+                    if (descSec) descSec.style.display = "";
+                    evNewDesc.innerText = d.desc;
                 }
             }
 
-            // 5. 현장 사진 버튼 (갤러리 링크) 처리
-            const gallerySec = document.getElementById('sec-gallery-link');
-            const galleryBtn = document.getElementById('modalGalleryBtn');
+            // 5. 갤러리 링크 설정
+            const gallerySec = document.getElementById('evNewGallerySec');
+            const galleryBtn = document.getElementById('evNewGalleryBtn');
             if (gallerySec && galleryBtn) {
                 if (d.gallery && d.gallery.trim() !== "" && d.gallery !== "undefined") {
-                    gallerySec.style.display = 'block';
+                    gallerySec.style.display = "";
                     galleryBtn.href = d.gallery;
                 } else {
                     gallerySec.style.display = 'none';
                 }
             }
 
-            // 모달 열기 (네비게이션 바 문제를 해결하기 위해 z-index가 적용된 클래스 사용)
-            if (eventModal) {
-                eventModal.style.display = 'flex';
-                document.body.style.overflow = 'hidden'; // 스크롤 방지
+            // 6. 모달 표시 (인라인 flex 제거)
+            if (evModal) {
+                evModal.style.display = (window.innerWidth <= 992) ? "block" : "flex";
+                document.body.style.overflow = 'hidden'; 
             }
         });
     });
 
-    // [3] 모달 닫기 로직
-    const closeModal = () => {
-        if (eventModal) {
-            eventModal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // 스크롤 복구
+    // 모달 닫기 함수
+    const closeEvModal = () => {
+        if (evModal) {
+            evModal.style.display = 'none';
+            document.body.style.overflow = 'auto'; 
         }
     };
 
-    if (eCloseBtn) {
-        eCloseBtn.onclick = closeModal;
-    }
+    if (eCloseBtn) eCloseBtn.onclick = closeEvModal;
     
-    // 모달 바깥 영역 클릭 시 닫기
     window.addEventListener('click', (e) => {
-        if (e.target === eventModal) {
-            closeModal();
-        }
+        if (e.target === evModal) closeEvModal();
     });
 }
-    
 
     // --- [4. 갤러리 로직 (gallery.html)] ---
     if (window.location.hash && window.location.pathname.includes('gallery')) {
