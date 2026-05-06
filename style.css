@@ -631,6 +631,72 @@ header {
 }
 }
 
+/* --- [소개 섹션 모바일 최적화 (768px 이하)] --- */
+@media screen and (max-width: 768px) {
+    /* 1. 컨테이너를 세로 배치로 변경 */
+    .about-overview .container.overflow-inner {
+        display: flex !important;
+        flex-direction: column !important; /* 위: 이미지, 아래: 글 */
+        gap: 30px !important; /* 이미지와 글 사이 여백 */
+        padding: 0 20px !important; /* 좌우 패딩 */
+    }
+
+    /* 2. 이미지 영역: 찌부되지 않게 하고 높이 줄이기 */
+    .about-overview .about-image {
+        width: 100% !important; /* 너비를 꽉 차게 */
+        height: 250px !important; /* ⭐ 요청하신 대로 이미지 높이를 짧게 제한 */
+        min-height: auto !important;
+        order: 1; /* 위쪽 배치 */
+    }
+
+    .about-overview .about-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; /* 이미지가 규격에 맞게 꽉 차게 (안 찌그러짐) */
+        border-radius: 12px;
+    }
+
+    /* 3. 장식 요소(image-deco) 위치 조정 (선택사항) */
+    .about-overview .image-deco {
+        bottom: -15px !important;
+        right: 15px !important;
+        width: 100px !important;
+        height: 100px !important;
+    }
+
+    /* 4. 글자 박스 영역 */
+    .about-overview .about-text-box {
+        width: 100% !important; /* 너비를 꽉 차게 */
+        text-align: center !important; /* 모바일은 중앙 정렬이 깔끔함 */
+        order: 2; /* 아래쪽 배치 */
+        padding: 0 !important;
+    }
+
+    /* 제목 및 본문 크기 조정 */
+    .about-overview .about-text-box h2 {
+        font-size: 1.8rem !important; /* 제목 크기 축소 */
+        line-height: 1.3 !important;
+        word-break: keep-all;
+    }
+
+    .about-overview .desc {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        margin-top: 15px !important;
+    }
+
+    /* 5. 통계(stats) 아이템 정렬 보정 */
+    .about-overview .stats {
+        justify-content: center !important; /* 중앙 정렬 */
+        gap: 15px !important;
+        margin: 25px 0 !important;
+    }
+
+    .about-overview .stat-item strong {
+        font-size: 2rem !important; /* 숫자 크기 살짝 조정 */
+    }
+}
+
 /* =========================================
    8. 애니메이션 & 푸터 (Footer)
    ========================================= */
