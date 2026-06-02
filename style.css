@@ -2644,16 +2644,33 @@ footer {
 /* [1] 그리드: 한 줄에 4개 */
 .event-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 20px !important;
+    grid-template-columns: repeat(4, 1fr) !important; /* 한 줄에 4개 유지 */
+    gap: 24px !important;
+    align-items: start !important;
+    
+    /* 가로 정렬 및 너비 맞추기 (핵심) */
+    width: 100% !important;
+    max-width: 1200px !important; /* 상단 메뉴나 콘텐츠 영역 크기에 맞게 조절 (보통 1100px~1200px) */
+    margin: 0 auto !important;    /* ★ 왼쪽/오른쪽 여백을 똑같이 주어 가운데 정렬 */
+    padding: 20px 0 !important;
 }
 
 /* [2] 포스터 호버 뱃지 (왼쪽 상단 소형) */
 .poster-wrapper {
+    width: 100% !important;
+    aspect-ratio: 1 / 1.414 !important; /* A4 비율 고정 */
+    height: 320px !important;            /* 혹은 원하시는 세로 높이 지정 (ex: 300px~350px) */
     position: relative !important;
-    aspect-ratio: 1 / 1.414 !important;
-    overflow: hidden !important;
-    border-radius: 10px;
+    overflow: hidden !important;        /* 중요: 이미지가 박스를 삐져나가지 못하게 차단 */
+    border-radius: 12px !important;
+    margin-bottom: 12px !important;
+}
+
+.event-card {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    cursor: pointer;
 }
 
 .event-card .badge {
@@ -2733,7 +2750,7 @@ footer {
     top: 0; left: 0; width: 100%; height: 100%;
     justify-content: center;
     align-items: center;
-    z-index: 9999 !important; /* 네비게이션보다 높게 설정 */
+    z-index: 99999 !important; /* 상단 메뉴바보다 무조건 위에 오도록 수정 */
     padding: 20px;
 }
 
@@ -2897,23 +2914,34 @@ footer {
 /* [4] 메인 페이지 카드 스타일 */
 .event-card .poster-wrapper {
     width: 100% !important;
-    aspect-ratio: 1 / 1.414 !important;
+    aspect-ratio: 1 / 1.414 !important; /* ★ A4 포스터 황금비율 고정 */
     position: relative !important;
     overflow: hidden !important;
+    border-radius: 12px !important;
+    margin-bottom: 12px !important;
     background-color: #f5f5f5 !important;
 }
-
 .event-card .poster-img {
     width: 100% !important;
     height: 100% !important;
-    background-size: cover !important;
+    background-size: cover !important; /* ★ 비율 유지하며 박스에 꽉 채우기 */
     background-position: center !important;
-    transition: all 0.3s ease;
+    background-repeat: no-repeat !important;
+    transition: all 0.3s ease !important;
 }
 
 .event-card:hover .poster-img {
     filter: brightness(0.7) !important;
     transform: scale(1.05);
+}
+
+.poster-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;      /* 중요: 이미지가 찌그러지지 않고 꽉 차게 */
+    background-position: center;  /* 이미지 중심을 기준으로 정렬 */
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease; /* 호버 효과용 (선택) */
 }
 
 /* 카드 위 뱃지 */
@@ -2932,15 +2960,14 @@ footer {
 .event-card .poster-wrapper .badge.b-upcoming { background-color: #f39c12 !important; }
 .event-card .poster-wrapper .badge.b-past { background-color: rgba(34, 34, 34, 0.9) !important; }
 
-.event-card .event-img {
-    width: 100%;
-    height: 380px; /* 모든 카드의 이미지 높이를 동일하게 고정 */
-    overflow: hidden;
-    background-size: cover; /* 이미지가 영역에 꽉 차도록 비율 조정 */
-    background-position: center; /* 이미지의 중앙이 보이도록 */
-    background-repeat: no-repeat;
-    border-radius: 12px; /* 카드 상단 둥글게 */
-    background-color: #f0f0f0; /* 이미지 로딩 전 배경색 */
+.event-card img, .event-card .poster-wrapper {
+    width: 100% !important;
+    height: 400px !important; /* 원하는 세로 높이로 고정 */
+    object-fit: contain !important; /* ★비율 유지★ (찌그러짐 방지) */
+    object-position: top !important; /* 이미지 상단 정렬 */
+    background-size: contain !important; /* background-image 방식인 경우 */
+    background-repeat: no-repeat !important;
+    border-radius: 12px;
 }
 
 .event-info {
