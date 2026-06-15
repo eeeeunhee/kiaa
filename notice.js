@@ -150,4 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('click', (e) => {
         if (e.target === noticeModal) closeModal();
     });
+
+
 });
